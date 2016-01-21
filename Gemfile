@@ -12,6 +12,8 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem "faker"
   gem "sqlite3"
+  gem "pry"
+  gem "annotate"
 end
 
 group :production do
