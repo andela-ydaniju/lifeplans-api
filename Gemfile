@@ -8,6 +8,7 @@ gem "sqlite3"
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
   gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
