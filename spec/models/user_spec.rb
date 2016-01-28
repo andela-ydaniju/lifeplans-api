@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   let(:user) do
-    create(:user)
+    build(:user)
   end
 
   context "when initialized" do
