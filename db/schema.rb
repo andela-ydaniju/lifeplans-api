@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128221035) do
+ActiveRecord::Schema.define(version: 20160202204408) do
 
   create_table "bucketlists", force: :cascade do |t|
     t.string   "title"

@@ -4,6 +4,8 @@ AllCops:
     - "vendor/**/*"
     - "db/schema.rb"
   UseCache: false
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
 Style/CollectionMethods:
   Description: Preferred collection methods.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size
