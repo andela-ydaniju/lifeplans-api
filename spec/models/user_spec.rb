@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
 
   context "when initialized" do
     it "is valid with correct attributes" do
-      binding.pry
       expect(user).to be_valid
     end
   end
