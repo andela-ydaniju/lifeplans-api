@@ -9,5 +9,6 @@
 #
 
 class Bucketlist < ActiveRecord::Base
+  has_many :items
   validates :title, length: { maximum: 50 }, presence: true
 end
