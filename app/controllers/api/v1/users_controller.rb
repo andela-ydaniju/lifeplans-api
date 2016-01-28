@@ -4,10 +4,14 @@ module Api
       def create
         @user = User.new(user_params)
         if @user.save
-          render json: { "message": "Account Created Successfully" }
+          render json: { feedback: "You are welcome to Lifeplans" }
         else
-          render json: { "message": @user.errors }, status: 400
+          render json: { feedback: @user.errors }, status: :unprocessable_entity
         end
+      end
+
+      def show
+        respond_with User.find(params[:id])
       end
 
       private
