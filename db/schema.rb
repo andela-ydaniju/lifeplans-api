@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160202204408) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "password_digest"
-    t.string   "encrypted_password"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true

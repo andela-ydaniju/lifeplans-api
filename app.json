@@ -1,7 +1,6 @@
 {
   "name": "lifeplans-api",
-  "scripts": {
-  },
+  "scripts": {},
   "env": {
     "LANG": {
       "required": true
