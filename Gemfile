@@ -2,10 +2,12 @@ source "https://rubygems.org"
 ruby "2.2.3"
 gem "rails", "4.2.4"
 gem "rails-api"
+gem "jwt"
 
 gem "spring", group: :development
 
 gem "coveralls", require: false
+gem "figaro"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"

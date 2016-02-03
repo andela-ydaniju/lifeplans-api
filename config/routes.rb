@@ -5,7 +5,7 @@ Rails.application.routes.draw do
               &routes_block
   end
 
-  root to: "root#index"
+  root to: "homes#index"
 
   namespace :api, path: "" do
     api_version_handler "1", true do
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       end
 
       scope :users, path: "users" do
-        post "new" => "users#create"
+        post "register" => "users#create"
+        get "users/show" => "users#show"
       end
     end
   end
