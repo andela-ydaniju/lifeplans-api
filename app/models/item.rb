@@ -12,6 +12,7 @@
 
 class Item < ActiveRecord::Base
   belongs_to :bucketlist
+  has_many :user, through: :bucketlist
 
   validates :description, length: { minimum: 20 }, presence: true
 end
