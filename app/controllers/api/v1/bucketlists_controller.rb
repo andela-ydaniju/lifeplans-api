@@ -12,6 +12,15 @@ module Api
         end
       end
 
+      def show
+        @bucketlist = Bucketlist.find_by_id(params[:id])
+        if @bucketlist
+          render json: @bucketlist
+        else
+          render json: { feedback: "Bucketlist not found" }, status: 404
+        end
+      end
+
       private
 
       def bucketlist_params
