@@ -1,6 +1,15 @@
 module Api
   module V1
     class BucketlistsController < ApplicationController
+      def index
+        @all_bucketlist = Bucketlist.all
+        if @all_bucketlist.any?
+          render json: @all_bucketlist
+        else
+          render json: { feedback: "You've got no bucketlists" }, status: 404
+        end
+      end
+
       def create
         @bucketlist = Bucketlist.new(bucketlist_params)
         if @bucketlist.save
