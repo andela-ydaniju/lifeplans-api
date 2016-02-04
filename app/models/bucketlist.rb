@@ -6,9 +6,11 @@
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
 #
 
 class Bucketlist < ActiveRecord::Base
   has_many :items
+  belongs_to :user
   validates :title, length: { maximum: 50 }, presence: true
 end
