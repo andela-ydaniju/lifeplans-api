@@ -30,6 +30,16 @@ module Api
         end
       end
 
+      def update
+        @bucketlist = Bucketlist.find_by_id(params[:id])
+        update = @bucketlist.update_attributes(title: params[:title])
+        if update
+          render json: @bucketlist
+        else
+          render json: { feedback: "Could not update bucketlist" }, status: 422
+        end
+      end
+
       def destroy
         @bucketlist = Bucketlist.find_by_id(params[:id])
         if @bucketlist.nil?
