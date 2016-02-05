@@ -1,11 +1,17 @@
 require "rails_helper"
 RSpec.describe "Update bucketlist process", type: :request do
+  let(:user) do
+    create(:user)
+  end
   it "changes the attribute of a bucketlist" do
-    bucketlist = create(:bucketlist)
+    signin_helper(user.username, user.password)
+    token = token_helper(user.username, user.password)
 
+    bucketlist = create(:bucketlist)
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
     put "/bucketlists/#{bucketlist.id}", {
@@ -20,11 +26,14 @@ RSpec.describe "Update bucketlist process", type: :request do
   end
 
   it "alerts when nothing is changed" do
-    bucketlist = create(:bucketlist)
+    signin_helper(user.username, user.password)
+    token = token_helper(user.username, user.password)
 
+    bucketlist = create(:bucketlist)
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
     put "/bucketlists/#{bucketlist.id}", {

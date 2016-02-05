@@ -14,6 +14,7 @@ RSpec.describe "Logging in to an account", type: :request do
       username: user.username,
       password: user.password,
     }, headers
+
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(200)
   end
