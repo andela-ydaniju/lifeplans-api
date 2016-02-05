@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
+    - "config/initializers/secret_token.rb"
   UseCache: false
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
