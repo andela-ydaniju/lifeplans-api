@@ -16,6 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-LifeplansApi::Application.config.secret_token =
-  "64a66b4ec7af178426c7df02411b98bd16ff9f6dc31de8151fa248f7f4a9fd1c48aa"\
-"ff6d675207f0b332245892451da1da8d2e0052398a880eee467b34d235e2"
+LifeplansApi::Application.config.secret_token = "64a66b4ec7af178426c7df02411b98bd16ff9f6dc31de8151fa248f7f4a9fd1c48aaff6d675207f0b332245892451da1da8d2e0052398a880eee467b34d235e2"
