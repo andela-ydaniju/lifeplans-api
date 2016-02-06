@@ -14,5 +14,7 @@ class User < ActiveRecord::Base
   has_many :items, through: :bucketlist
   has_secure_password
 
-  validates :username, uniqueness: { case_sensitive: false }
+  validates :username, uniqueness: { case_sensitive: false },
+                       presence: true
+  validates :password, presence: true, length: { minimum: 6 }
 end

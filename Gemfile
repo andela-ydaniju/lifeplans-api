@@ -8,6 +8,7 @@ gem "spring", group: :development
 
 gem "coveralls", require: false
 gem "figaro"
+gem "simple_command"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"

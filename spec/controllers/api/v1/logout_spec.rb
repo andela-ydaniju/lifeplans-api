@@ -6,17 +6,20 @@ RSpec.describe "Logging in to an account", type: :request do
   end
 
   it "logs user in with correct entries" do
+    signin_helper(user.username, user.password)
+
+    token = token_helper(user.username, user.password)
+
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
     }
-    post "/auth/login", {
-      username: user.username,
-      password: user.password,
-    }, headers
 
-    get "/auth/logout"
-    expect(response.content_type).to eq("application/json")
+    get "/auth/logout",
+        {},
+        headers
+
     expect(response).to have_http_status(200)
   end
 end
