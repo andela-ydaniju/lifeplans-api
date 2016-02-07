@@ -11,8 +11,8 @@ RSpec.describe "Logging in to an account", type: :request do
     token = token_helper(user.username, user.password)
 
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 

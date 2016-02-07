@@ -10,7 +10,7 @@ RSpec.describe "Bucketlist creation", type: :request do
 
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
     post "/bucketlists", {
       title: bucketlist.title,
@@ -24,7 +24,7 @@ RSpec.describe "Bucketlist creation", type: :request do
 
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token wrong_token_for_419s"
     }
     post "/bucketlists", {
@@ -38,8 +38,8 @@ RSpec.describe "Bucketlist creation", type: :request do
     signin_helper(user.username, user.password)
     token = token_helper(user.username, user.password)
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
@@ -54,7 +54,7 @@ RSpec.describe "Bucketlist creation", type: :request do
     token = token_helper(user.username, user.password)
     headers = {
       "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
