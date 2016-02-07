@@ -15,6 +15,7 @@ module Api
 
       def logout
         current_user.update_attribute(:auth_token, nil)
+        render json: { "message" => "You're succesfully logged out" }
       end
     end
   end
