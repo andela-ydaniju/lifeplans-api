@@ -10,10 +10,6 @@ module Api
         end
       end
 
-      def show
-        respond_with User.find(params[:id])
-      end
-
       private
 
       def user_params

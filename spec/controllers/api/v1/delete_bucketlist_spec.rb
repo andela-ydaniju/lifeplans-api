@@ -39,7 +39,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
            headers
 
     expect(response.content_type).to eq "application/json"
-    expect(response).to have_http_status 422
+    expect(response).to have_http_status 404
   end
 
   it "makes bucketlist become unavailable" do

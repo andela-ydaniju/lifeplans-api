@@ -44,11 +44,9 @@ module Api
       def destroy
         bucketlist = current_user.bucketlists.find_by_id(params[:id])
         if bucketlist.nil?
-          render json: { feedback: "Bucketlist does not exist" }, status: 422
+          render json: { feedback: "Bucketlist does not exist" }, status: 404
         elsif bucketlist.destroy
           render json: { feedback: "Bucketlist successfully destroyed" }
-        else
-          render json: { feedback: "Bucketlist not found" }, status: 404
         end
       end
 

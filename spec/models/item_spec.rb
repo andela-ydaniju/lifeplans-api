@@ -23,7 +23,7 @@ RSpec.describe Item, type: :model do
     end
 
     it "has description attribute not less than 20 letters" do
-      item.description = "a" * 19
+      item.description = "a" * 4
       expect(item).to be_invalid
     end
   end

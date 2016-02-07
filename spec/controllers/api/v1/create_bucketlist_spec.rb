@@ -16,7 +16,22 @@ RSpec.describe "Bucketlist creation", type: :request do
       title: bucketlist.title,
     }, headers
     json_parsed = JSON.parse(response.body)
-    expect(json_parsed["message"]).to include "Token required"
+    expect(json_parsed["message"]).to include "Token required. P"
+  end
+
+  it "does not create bucketlist for unauthenticated user" do
+    bucketlist = build(:bucketlist)
+
+    headers = {
+      "ACCEPT" => "application/json",
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "token wrong_token_for_419s"
+    }
+    post "/bucketlists", {
+      title: bucketlist.title,
+    }, headers
+    json_parsed = JSON.parse(response.body)
+    expect(json_parsed["message"]).to include "Token invalid"
   end
 
   it "creates no bucketlist if title not given" do
@@ -32,5 +47,20 @@ RSpec.describe "Bucketlist creation", type: :request do
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(422)
+  end
+
+  it "creates bucketlist if all conditions are met" do
+    signin_helper(user.username, user.password)
+    token = token_helper(user.username, user.password)
+    headers = {
+      "ACCEPT" => "application/json",
+      "HTTP_ACCEPT" => "application/json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
+    }
+    post "/bucketlists", {
+      title: "Lagrange",
+    }, headers
+    expect(response.content_type).to eq("application/json")
+    expect(response).to have_http_status(200)
   end
 end

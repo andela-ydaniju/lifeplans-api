@@ -13,7 +13,7 @@
 FactoryGirl.define do
   factory :item do
     description Faker::Hipster.sentence
-    bucketlist_id Faker::Number.digit
+    bucketlist_id 1
     done false
   end
 end
