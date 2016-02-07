@@ -12,7 +12,7 @@ class AuthenticateUser
       user.update_attribute(:auth_token, token)
 
       {
-        "token" => token,
+        "token" => token
       }
     end
   end

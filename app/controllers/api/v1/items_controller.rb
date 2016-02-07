@@ -13,6 +13,17 @@ module Api
         end
       end
 
+      def update
+        item = Item.find_by_id(params[:id])
+        if item.update_attributes item_params
+          render json: item
+        else
+          render json: {
+            feedback: "Item could not be updated"
+          }, status: :unprocessable_entity
+        end
+      end
+
       private
 
       def item_params
