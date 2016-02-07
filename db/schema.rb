@@ -40,6 +40,4 @@ ActiveRecord::Schema.define(version: 20160206170207) do
     t.string   "auth_token"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
-
 end
