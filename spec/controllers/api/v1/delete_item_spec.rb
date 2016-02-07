@@ -6,7 +6,7 @@ RSpec.describe "Delete item", type: :request do
   end
   it "deletes an item" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -27,7 +27,7 @@ RSpec.describe "Delete item", type: :request do
 
   it "deletes an item" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {

@@ -5,7 +5,7 @@ RSpec.describe "Update bucketlist process", type: :request do
   end
   it "changes the attribute of a bucketlist" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -27,7 +27,7 @@ RSpec.describe "Update bucketlist process", type: :request do
 
   it "alerts when nothing is changed" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {

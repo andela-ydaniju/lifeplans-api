@@ -11,7 +11,6 @@
 
 class User < ActiveRecord::Base
   has_many :bucketlists, dependent: :destroy
-  has_many :items, through: :bucketlist
   has_secure_password
 
   validates :username, uniqueness: { case_sensitive: false },

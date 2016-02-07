@@ -6,7 +6,7 @@ RSpec.describe "Item creation", type: :request do
   end
   it "creates new item for valid user" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -27,7 +27,7 @@ RSpec.describe "Item creation", type: :request do
 
   it "creates new item for valid user" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {

@@ -6,7 +6,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
   end
   it "destroys selected bucketlist if available" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -25,7 +25,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
 
   it "does not destroy unavailable bucketlist" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -44,7 +44,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
 
   it "makes bucketlist become unavailable" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {

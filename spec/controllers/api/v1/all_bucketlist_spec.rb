@@ -10,7 +10,7 @@ RSpec.describe "list all bucketlists", type: :request do
 
     create_list(:bucketlist, 3)
 
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
     get "/bucketlists", {},
         { HTTP_AUTHORIZATION: "token #{token}" }
 
@@ -25,7 +25,7 @@ RSpec.describe "list all bucketlists", type: :request do
     get "/bucketlists"
     signin_helper(user.username, user.password)
 
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
     get "/bucketlists", {},
         { HTTP_AUTHORIZATION: "token #{token}" }
 

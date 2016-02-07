@@ -6,7 +6,7 @@ RSpec.describe "Show single bucketlist", type: :request do
   end
   it "show a single bucketlist" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -23,7 +23,7 @@ RSpec.describe "Show single bucketlist", type: :request do
 
   it "show a single bucketlist" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
