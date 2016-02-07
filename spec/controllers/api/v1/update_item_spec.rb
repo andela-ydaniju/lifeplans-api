@@ -10,8 +10,8 @@ RSpec.describe "Update item", type: :request do
 
     bucketlist = create(:bucketlist)
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
@@ -31,8 +31,8 @@ RSpec.describe "Update item", type: :request do
 
     bucketlist = create(:bucketlist)
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json",
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 

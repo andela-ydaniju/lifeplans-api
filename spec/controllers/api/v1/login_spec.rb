@@ -7,8 +7,8 @@ RSpec.describe "Logging in to an account", type: :request do
 
   it "logs user in with correct entries" do
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
     post "/auth/login", {
       username: user.username,
@@ -21,8 +21,8 @@ RSpec.describe "Logging in to an account", type: :request do
 
   it "will not log user in with incorrect entries" do
     headers = {
-      "ACCEPT" => "application/json",
-      "HTTP_ACCEPT" => "application/json"
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
     post "/auth/login", {
       username: user.username,
