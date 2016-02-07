@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe "Update item", type: :request do
+RSpec.describe "Delete item", type: :request do
   let(:user) do
     create(:user)
   end
-  it "updates the paramenters of an item" do
+  it "deletes an item" do
     signin_helper(user.username, user.password)
     token = token_helper(user.username, user.password)
 
@@ -17,15 +17,15 @@ RSpec.describe "Update item", type: :request do
 
     item = create(:item)
 
-    put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { description: Faker::Lorem.sentence },
-        headers
+    delete "/bucketlists/#{bucketlist.id}/items/#{item.id}",
+           {},
+           headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 200
   end
 
-  it "does not update if the paramenters are incorrect" do
+  it "deletes an item" do
     signin_helper(user.username, user.password)
     token = token_helper(user.username, user.password)
 
@@ -38,11 +38,11 @@ RSpec.describe "Update item", type: :request do
 
     item = create(:item)
 
-    put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { description: nil },
-        headers
+    delete "/bucketlists/#{bucketlist.id}/items/#{item.id + 5}",
+           {},
+           headers
 
     expect(response.content_type).to eq "application/json"
-    expect(response).to have_http_status 422
+    expect(response).to have_http_status 404
   end
 end

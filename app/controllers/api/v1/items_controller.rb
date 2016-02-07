@@ -24,6 +24,15 @@ module Api
         end
       end
 
+      def destroy
+        item = Item.find_by_id(params[:id])
+        if item.nil?
+          render json: { feedback: "Item does not exist" }, status: 404
+        elsif item.destroy
+          render json: { feedback: "Item successfully destroyed" }
+        end
+      end
+
       private
 
       def item_params
