@@ -9,6 +9,8 @@ Lifeplans-api is a an API for developers to build bucketlist applications
 
 ### List All Bucketlist [GET]
 
++ Request (application/json)
+
 + Response 200 (application/json)
 
         {
@@ -16,48 +18,57 @@ Lifeplans-api is a an API for developers to build bucketlist applications
             "title": "Play"
         }
 
-### Create a New Question [POST]
+### Successful bucketlist creation [POST]
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
++ Request (application/json)
+        
+        {
+            "title": "Weeding"
+        }
+
++ Response 200 (application/json) 
+    
+        {
+            "id": 4,
+            "title": "Weeding",
+            "created_at": "2016-02-08T14:14:13.349Z",
+            "updated_at": "2016-02-08T14:14:13.349Z",
+            "user_id": 3
+        }
+
+## User Creation [/users/register]
+
+### successful user creation [POST]
+
+
++ Request (application/json)
+        
+        {
+            "username": "Daniju",
+            "password": "password",
+            "password_confirmation": "password"
+        }
+
+
++ Response 200 (application/json)
+
+        {
+            "feedback": "You are welcome to Lifeplans"
+        }
+
+## User Login [/auth/login]
+
+### Successful user login [POST]
 
 + Request (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            "username": "Daniju",
+            "password": "password"
         }
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE0NTUxMTMwMjd9.zT61jaREEOy0TW2nvHGSBXLzcPAXdvBw4wWRVWyNfOU"
+        }
