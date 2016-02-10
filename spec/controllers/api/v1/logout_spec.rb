@@ -8,7 +8,7 @@ RSpec.describe "Logging in to an account", type: :request do
   it "logs user in with correct entries" do
     signin_helper(user.username, user.password)
 
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     headers = {
       "ACCEPT" => "application/vnd.lifeplans-api.v1+json",

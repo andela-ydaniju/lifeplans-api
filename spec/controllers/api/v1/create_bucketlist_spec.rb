@@ -36,7 +36,7 @@ RSpec.describe "Bucketlist creation", type: :request do
 
   it "creates no bucketlist if title not given" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
     headers = {
       "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
@@ -51,7 +51,7 @@ RSpec.describe "Bucketlist creation", type: :request do
 
   it "creates bucketlist if all conditions are met" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
     headers = {
       "ACCEPT" => "application/json",
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",

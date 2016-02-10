@@ -3,12 +3,9 @@ module Api
     class BucketlistsController < ApplicationController
       before_action :authenticate_request
       def index
-        all_bucketlist = current_user.bucketlists.all
-        if all_bucketlist.any?
-          render json: all_bucketlist
-        else
-          render json: { feedback: "You've got no bucketlists" }, status: 404
-        end
+        all_bucketlists = current_user.bucketlists
+        bucketlists = Search.new(all_bucketlists, params).filter
+        display_all Pagination.new(bucketlists, params).start
       end
 
       def create
@@ -54,6 +51,14 @@ module Api
 
       def bucketlist_params
         params.permit(:title).merge(user_id: current_user.id)
+      end
+
+      def display_all(bucketlists)
+        if bucketlists.empty?
+          render json: { feedback: "Bucketlist empty" }, status: 404
+        else
+          render json: bucketlists, root: false
+        end
       end
     end
   end

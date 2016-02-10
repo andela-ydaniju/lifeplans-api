@@ -6,7 +6,7 @@ RSpec.describe "Update item", type: :request do
   end
   it "updates the paramenters of an item" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {
@@ -27,7 +27,7 @@ RSpec.describe "Update item", type: :request do
 
   it "does not update if the paramenters are incorrect" do
     signin_helper(user.username, user.password)
-    token = token_helper(user.username, user.password)
+    token = token_builder(user.username, user.password)
 
     bucketlist = create(:bucketlist)
     headers = {

@@ -13,13 +13,13 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 end
 
-def signin_helper(username = "man", pass = "mamamamama")
-  post "/auth/login", { username: username, password: pass },
+def signin_helper(username, password)
+  post "/auth/login", { username: username, password: password },
        { HTTP_ACCEPT: "application/vnd.apibucket.v1+json" }
 end
 
-def token_helper(username = "man", pass = "mamamamama")
-  signin_helper(username, pass)
+def token_builder(username, password)
+  signin_helper(username, password)
   parsed_response = JSON.parse response.body
 
   parsed_response["token"]
