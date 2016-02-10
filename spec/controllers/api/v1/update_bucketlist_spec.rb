@@ -15,14 +15,14 @@ RSpec.describe "Update bucketlist process", type: :request do
     }
 
     put "/bucketlists/#{bucketlist.id}", {
-      title: "Visit China",
+      name: "Visit China",
     }, headers
 
     json = JSON.parse(response.body)
 
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 200
-    expect(json["title"]).to eql "Visit China"
+    expect(json["name"]).to eql "Visit China"
   end
 
   it "alerts when nothing is changed" do
@@ -37,7 +37,7 @@ RSpec.describe "Update bucketlist process", type: :request do
     }
 
     put "/bucketlists/#{bucketlist.id}", {
-      title: nil,
+      name: nil,
     }, headers
 
     expect(response.content_type).to eq("application/json")

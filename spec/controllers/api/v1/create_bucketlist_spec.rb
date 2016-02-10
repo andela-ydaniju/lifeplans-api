@@ -13,7 +13,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
     post "/bucketlists", {
-      title: bucketlist.title,
+      name: bucketlist.name,
     }, headers
     json_parsed = JSON.parse(response.body)
     expect(json_parsed["message"]).to include "Token required. P"
@@ -28,13 +28,13 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token wrong_token_for_419s"
     }
     post "/bucketlists", {
-      title: bucketlist.title,
+      name: bucketlist.name,
     }, headers
     json_parsed = JSON.parse(response.body)
     expect(json_parsed["message"]).to include "Token invalid"
   end
 
-  it "creates no bucketlist if title not given" do
+  it "creates no bucketlist if name not given" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)
     headers = {
@@ -43,7 +43,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
-      title: nil,
+      name: nil,
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(422)
@@ -58,7 +58,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
-      title: "Lagrange",
+      name: "Lagrange",
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status(200)
