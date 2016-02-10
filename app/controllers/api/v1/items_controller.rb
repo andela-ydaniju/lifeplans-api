@@ -36,7 +36,7 @@ module Api
       private
 
       def item_params
-        params.permit(:description, :done).merge(
+        params.permit(:name, :done).merge(
           bucketlist_id: params[:bucketlist_id]
         )
       end

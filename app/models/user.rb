@@ -7,10 +7,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string
+#  auth_token      :string
 #
 
 class User < ActiveRecord::Base
-  has_many :bucketlists, dependent: :destroy
+  has_many :bucketlists
   has_secure_password
 
   validates :username, uniqueness: { case_sensitive: false },

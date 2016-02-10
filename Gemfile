@@ -4,12 +4,9 @@ gem "rails", "4.2.4"
 gem "rails-api"
 gem "jwt"
 gem "active_model_serializers"
-
-gem "spring", group: :development
-
 gem "coveralls", require: false
-gem "figaro"
 gem "simple_command"
+gem "bcrypt", "~> 3.1.7"
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0"
@@ -18,6 +15,7 @@ group :development, :test do
   gem "sqlite3"
   gem "pry"
   gem "annotate"
+  gem "spring"
 end
 
 group :production do
@@ -25,17 +23,3 @@ group :production do
   gem "puma"
   gem "rails_12factor"
 end
-# To use ActiveModel has_secure_password
-gem "bcrypt", "~> 3.1.7"
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

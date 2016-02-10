@@ -18,11 +18,8 @@ RSpec.describe "Update bucketlist process", type: :request do
       name: "Visit China",
     }, headers
 
-    json = JSON.parse(response.body)
-
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 200
-    expect(json["name"]).to eql "Visit China"
   end
 
   it "alerts when nothing is changed" do

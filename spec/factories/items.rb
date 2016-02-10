@@ -3,7 +3,7 @@
 # Table name: items
 #
 #  id            :integer          not null, primary key
-#  description   :text
+#  name          :text
 #  bucketlist_id :integer
 #  done          :boolean          default(FALSE)
 #  created_at    :datetime         not null
@@ -12,7 +12,7 @@
 
 FactoryGirl.define do
   factory :item do
-    description Faker::Hipster.sentence
+    name Faker::Hipster.sentence
     bucketlist_id 1
     done false
   end
