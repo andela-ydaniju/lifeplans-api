@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :bucketlist do
-    title Faker::Hipster.word
+    name Faker::Hipster.word
     user_id 1
   end
 end

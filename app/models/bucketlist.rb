@@ -12,5 +12,5 @@
 class Bucketlist < ActiveRecord::Base
   has_many :items, dependent: :destroy
   belongs_to :user
-  validates :title, length: { maximum: 50 }, presence: true
+  validates :name, length: { maximum: 50 }, presence: true
 end

@@ -30,7 +30,7 @@ module Api
 
       def update
         bucketlist = current_user.bucketlists.find_by_id(params[:id])
-        update = bucketlist.update_attributes(title: params[:title])
+        update = bucketlist.update_attributes(name: params[:name])
         if update
           render json: bucketlist
         else
@@ -50,7 +50,7 @@ module Api
       private
 
       def bucketlist_params
-        params.permit(:title).merge(user_id: current_user.id)
+        params.permit(:name).merge(user_id: current_user.id)
       end
 
       def display_all(bucketlists)

@@ -21,8 +21,8 @@ RSpec.describe Bucketlist, type: :model do
       expect(bucketlist).to be_valid
     end
 
-    it "is invalid with title attribute with length greater than 50" do
-      bucketlist.title = "lo" * 50
+    it "is invalid with name attribute with length greater than 50" do
+      bucketlist.name = "lo" * 50
       expect(bucketlist).to be_invalid
     end
   end
