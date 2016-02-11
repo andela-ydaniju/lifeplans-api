@@ -11,7 +11,13 @@
 #
 
 class ItemSerializer < ActiveModel::Serializer
-  include SerializerHelper
-
   attributes :id, :name, :date_created, :date_modified, :done
+
+  def date_created
+    object.created_at.to_formatted_s(:db)
+  end
+
+  def date_modified
+    object.updated_at.to_formatted_s(:db)
+  end
 end
