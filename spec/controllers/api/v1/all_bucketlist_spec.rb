@@ -11,23 +11,62 @@ RSpec.describe "list all bucketlists", type: :request do
     create_list(:bucketlist, 3)
 
     token = token_builder(user.username, user.password)
-    get "/bucketlists", {},
-        { HTTP_AUTHORIZATION: "token #{token}" }
 
-    json = JSON.parse(response.body)
+    headers = {
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
+    }
+    get "/bucketlists", {},
+        headers
+
+    parsed_bucketlist = JSON.parse(response.body)
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 200
-    expect(json.length).to eq(3)
+    expect(parsed_bucketlist.length).to eq 3
   end
 
-  it "shows a nothing if list is empty" do
-    get "/bucketlists"
+  it "shows a list of all bucketlists matching a search" do
+    signin_helper(user.username, user.password)
+
+    create_list(:bucketlist, 3)
+
+    token = token_builder(user.username, user.password)
+
+    headers = {
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
+    }
+
+    post "/bucketlists", {
+      name: "Adventure",
+    }, headers
+
+    get "/bucketlists", {
+      q: "Advent"
+    }, headers
+
+    parsed_bucketlist = JSON.parse(response.body)
+
+    expect(response.content_type).to eq "application/json"
+    expect(response).to have_http_status 200
+    expect(parsed_bucketlist.last["name"]).to eq "Adventure"
+  end
+
+  it "shows nothing if list is empty" do
     signin_helper(user.username, user.password)
 
     token = token_builder(user.username, user.password)
+
+    headers = {
+      "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
+      "HTTP_AUTHORIZATION" => "token #{token}"
+    }
     get "/bucketlists", {},
-        { HTTP_AUTHORIZATION: "token #{token}" }
+        headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 404

@@ -20,6 +20,6 @@ RSpec.describe "Logging in to an account", type: :request do
         {},
         headers
 
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status 200
   end
 end

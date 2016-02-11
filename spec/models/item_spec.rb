@@ -18,12 +18,22 @@ RSpec.describe Item, type: :model do
   end
 
   context "when initialized" do
-    it "is valid with all attributes complete" do
+    it "is valid with all attributes correct" do
       expect(item).to be_valid
     end
 
-    it "has name attribute not less than 20 letters" do
+    it "has name attribute not less than 5 letters" do
       item.name = "a" * 4
+      expect(item).to be_invalid
+    end
+
+    it "is invalid if name is absent" do
+      item.name = nil
+      expect(item).to be_invalid
+    end
+
+    it "is invalid if name is empty" do
+      item.name = ""
       expect(item).to be_invalid
     end
   end

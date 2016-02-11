@@ -2,6 +2,7 @@ module Api
   module V1
     class BucketlistsController < ApplicationController
       before_action :authenticate_request
+
       def index
         all_bucketlists = current_user.bucketlists
         bucketlists = Search.new(all_bucketlists, params).choose
@@ -11,39 +12,43 @@ module Api
       def create
         bucketlist = Bucketlist.new(bucketlist_params)
         if bucketlist.save
-          render json: bucketlist
+          render json: bucketlist, status: 201
         else
           render json: {
             feedback: "Bucketlist not created"
-          }, status: :unprocessable_entity
+          },
+                 status: :unprocessable_entity
         end
       end
 
       def show
-        bucketlist = current_user.bucketlists.find_by_id(params[:id])
+        bucketlist = current_user.bucketlists.find_by(id: params[:id])
         if bucketlist
-          render json: bucketlist
+          render json: bucketlist, status: 200
         else
           render json: { feedback: "Bucketlist not found" }, status: 404
         end
       end
 
       def update
-        bucketlist = Bucketlist.find_by_id(params[:id])
+        bucketlist = Bucketlist.find_by(id: params[:id])
         update = bucketlist.update_attributes(name: params[:name])
         if update
-          render json: bucketlist
+          render json: bucketlist, status: 200
         else
           render json: { feedback: "Could not update bucketlist" }, status: 422
         end
       end
 
       def destroy
-        bucketlist = current_user.bucketlists.find_by_id(params[:id])
+        bucketlist = current_user.bucketlists.find_by(id: params[:id])
         if bucketlist.nil?
           render json: { feedback: "Bucketlist does not exist" }, status: 404
         elsif bucketlist.destroy
-          render json: { feedback: "Bucketlist successfully destroyed" }
+          render json: {
+            feedback: "Bucketlist successfully destroyed"
+          },
+                 status: 200
         end
       end
 
@@ -57,7 +62,7 @@ module Api
         if bucketlists.empty?
           render json: { feedback: "Bucketlist empty" }, status: 404
         else
-          render json: bucketlists, root: false
+          render json: bucketlists, root: false, status: 200
         end
       end
     end

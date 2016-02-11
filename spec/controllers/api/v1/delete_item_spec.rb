@@ -4,6 +4,7 @@ RSpec.describe "Delete item", type: :request do
   let(:user) do
     create(:user)
   end
+
   it "deletes an item" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)
@@ -25,7 +26,7 @@ RSpec.describe "Delete item", type: :request do
     expect(response).to have_http_status 200
   end
 
-  it "deletes an item" do
+  it "does not delete an item inexistent item" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)
 

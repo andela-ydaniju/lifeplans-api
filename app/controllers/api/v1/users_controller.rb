@@ -4,7 +4,9 @@ module Api
       def create
         user = User.new(user_params)
         if user.save
-          render json: { feedback: "You are welcome to Lifeplans" }
+          render json: {
+            feedback: "You are welcome to Lifeplans"
+          }, status: 201
         else
           render json: { feedback: user.errors }, status: :unprocessable_entity
         end

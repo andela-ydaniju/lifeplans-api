@@ -23,7 +23,7 @@ describe "Signup process", type: :request do
              password_confirmation: user.password
            },
            { HTTP_ACCEPT: "application/vnd.lifeplans-api.v1+json" }
-      expect(response.status).to eql 200
+      expect(response.status).to eql 201
     end
   end
 end
