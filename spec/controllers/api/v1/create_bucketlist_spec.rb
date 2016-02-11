@@ -16,7 +16,8 @@ RSpec.describe "Bucketlist creation", type: :request do
       name: bucketlist.name,
     }, headers
     json_parsed = JSON.parse(response.body)
-    expect(json_parsed["message"]).to include "Token required. P"
+    message = "A token is required."
+    expect(json_parsed["message"]).to eq message
   end
 
   it "does not create bucketlist for unauthenticated user" do

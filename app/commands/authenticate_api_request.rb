@@ -15,7 +15,7 @@ class AuthenticateApiRequest
 
   def user
     token = get_token
-    return if token_empty? token
+    return if token_not_found? token
 
     user_by_token token
   end
@@ -31,10 +31,9 @@ class AuthenticateApiRequest
     auth_header.split(":").last.split("token").last.strip
   end
 
-  def token_empty?(token)
+  def token_not_found?(token)
     if token.nil?
-      errors[:message] = "Token required. "\
-      "Please see documentation for usage instructions."
+      errors[:message] = "A token is required."
 
       true
     end

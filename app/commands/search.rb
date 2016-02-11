@@ -6,7 +6,7 @@ class Search
     @params = params
   end
 
-  def filter
+  def choose
     if params[:q]
       objects.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
     else

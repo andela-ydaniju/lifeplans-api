@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
       scope :users, path: "users" do
         post "register" => "users#create"
-        get "users/show" => "users#show"
       end
     end
   end

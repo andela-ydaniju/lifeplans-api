@@ -4,8 +4,8 @@ module Api
       before_action :authenticate_request
       def index
         all_bucketlists = current_user.bucketlists
-        bucketlists = Search.new(all_bucketlists, params).filter
-        display_all Pagination.new(bucketlists, params).start
+        bucketlists = Search.new(all_bucketlists, params).choose
+        display Pagination.new(bucketlists, params).start
       end
 
       def create
@@ -53,7 +53,7 @@ module Api
         params.permit(:name).merge(user_id: current_user.id)
       end
 
-      def display_all(bucketlists)
+      def display(bucketlists)
         if bucketlists.empty?
           render json: { feedback: "Bucketlist empty" }, status: 404
         else
