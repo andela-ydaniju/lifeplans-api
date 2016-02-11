@@ -18,7 +18,7 @@ RSpec.describe "Item creation", type: :request do
     item = build(:item)
 
     post "/bucketlists/#{bucketlist.id}/items",
-         { description: item.description },
+         { name: item.name },
          headers
 
     expect(response.content_type).to eq "application/json"
@@ -37,7 +37,7 @@ RSpec.describe "Item creation", type: :request do
     }
 
     post "/bucketlists/#{bucketlist.id}/items",
-         { description: nil },
+         { name: nil },
          headers
 
     expect(response.content_type).to eq "application/json"

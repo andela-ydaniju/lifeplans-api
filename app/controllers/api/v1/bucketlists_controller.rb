@@ -29,7 +29,7 @@ module Api
       end
 
       def update
-        bucketlist = current_user.bucketlists.find_by_id(params[:id])
+        bucketlist = Bucketlist.find_by_id(params[:id])
         update = bucketlist.update_attributes(name: params[:name])
         if update
           render json: bucketlist

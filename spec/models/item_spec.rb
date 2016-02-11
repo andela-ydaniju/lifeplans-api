@@ -3,7 +3,7 @@
 # Table name: items
 #
 #  id            :integer          not null, primary key
-#  description   :text
+#  name          :text
 #  bucketlist_id :integer
 #  done          :boolean          default(FALSE)
 #  created_at    :datetime         not null
@@ -22,8 +22,8 @@ RSpec.describe Item, type: :model do
       expect(item).to be_valid
     end
 
-    it "has description attribute not less than 20 letters" do
-      item.description = "a" * 4
+    it "has name attribute not less than 20 letters" do
+      item.name = "a" * 4
       expect(item).to be_invalid
     end
   end

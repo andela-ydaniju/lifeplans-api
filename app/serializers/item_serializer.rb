@@ -10,8 +10,8 @@
 #  updated_at    :datetime         not null
 #
 
-class Item < ActiveRecord::Base
-  belongs_to :bucketlist
+class ItemSerializer < ActiveModel::Serializer
+  include SerializerHelper
 
-  validates :name, length: { minimum: 5 }, presence: true
+  attributes :id, :name, :date_created, :date_modified, :done
 end

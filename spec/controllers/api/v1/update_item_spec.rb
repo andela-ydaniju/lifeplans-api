@@ -18,7 +18,7 @@ RSpec.describe "Update item", type: :request do
     item = create(:item)
 
     put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { description: Faker::Lorem.sentence },
+        { name: Faker::Lorem.sentence },
         headers
 
     expect(response.content_type).to eq "application/json"
@@ -39,7 +39,7 @@ RSpec.describe "Update item", type: :request do
     item = create(:item)
 
     put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { description: nil },
+        { name: nil },
         headers
 
     expect(response.content_type).to eq "application/json"

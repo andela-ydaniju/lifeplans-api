@@ -15,7 +15,7 @@ end
 
 def signin_helper(username, password)
   post "/auth/login", { username: username, password: password },
-       { HTTP_ACCEPT: "application/vnd.apibucket.v1+json" }
+       { HTTP_ACCEPT: "application/vnd.lifeplans-api.v1+json" }
 end
 
 def token_builder(username, password)

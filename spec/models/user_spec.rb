@@ -7,6 +7,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string
+#  auth_token      :string
 #
 
 require "rails_helper"
