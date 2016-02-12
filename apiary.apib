@@ -5,52 +5,9 @@ HOST: http://lifeplans-api.herokuapp.com
 
 Lifeplans-api is a an API for developers to build bucketlist applications
 
-## Bucketlists Collection [/bucketlists]
-
-### List All Bucketlist [GET]
-
-+ Request (application/json)
-
-+ Response 200 (application/json)
-
-        [
-            {
-                "id": 3,
-                "title": "Weeding",
-                "created_at": "2016-02-08T14:14:09.610Z",
-                "updated_at": "2016-02-08T14:14:09.610Z",
-                "user_id": 3
-            },
-            {
-                "id": 4,
-                "title": "Seeding",
-                "created_at": "2016-02-08T14:14:13.349Z",
-                "updated_at": "2016-02-08T14:14:13.349Z",
-                "user_id": 3
-            }
-        ]
-
-### Successful bucketlist creation [POST]
-
-+ Request (application/json)
-        
-        {
-            "title": "Weeding"
-        }
-
-+ Response 200 (application/json) 
-    
-        {
-            "id": 4,
-            "title": "Weeding",
-            "created_at": "2016-02-08T14:14:13.349Z",
-            "updated_at": "2016-02-08T14:14:13.349Z",
-            "user_id": 3
-        }
-
 ## User Creation [/users/register]
 
-### successful user creation [POST]
+### Successful user creation [POST]
 
 
 + Request (application/json)
@@ -83,4 +40,288 @@ Lifeplans-api is a an API for developers to build bucketlist applications
 
         {
             "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE0NTUxMTMwMjd9.zT61jaREEOy0TW2nvHGSBXLzcPAXdvBw4wWRVWyNfOU"
+        }
+
+## Bucketlists Collection: Create and Display [/bucketlists]
+
+### Successful bucketlist creation [POST]
+
++ Request (application/json)
+        
+        {
+            "name": "Weeding"
+        }
+
++ Response 200 (application/json) 
+    
+        {
+            "id": 3,
+            "name": "Weeding",
+            "date_created": "2016-02-08 15:49:55",
+            "date_modified": "2016-02-08 15:49:55",
+            "user_id": 3
+        }
+
+### List All Bucketlist [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 4,
+                "name": "Weeding",
+                "items": [
+                {
+                    "id": 9,
+                    "name": "Give her out in marriage",
+                    "date_created": "2016-02-08 15:45:26",
+                    "date_modified": "2016-02-08 15:45:26",
+                    "done": false
+                },
+                {
+                    "id": 12,
+                    "name": "Seed investment in a big company like Andel",
+                    "date_created": "2016-02-08 15:49:55",
+                    "date_modified": "2016-02-08 15:49:55",
+                    "done": false
+                },
+                {
+                    "id": 13,
+                    "name": "Seed investment in a big company like Andel",
+                    "date_created": "2016-02-08 15:51:19",
+                    "date_modified": "2016-02-08 15:51:19",
+                    "done": false
+                }
+                ],
+                "date_created": "2016-02-08 14:14:13",
+                "date_modified": "2016-02-08 14:14:13",
+                "created_by": "Daniju"
+            },
+            {
+                "id": 11,
+                "name": "Feeding",
+                "items": [],
+                "date_created": "2016-02-12 20:55:07",
+                "date_modified": "2016-02-12 20:55:07",
+                "created_by": "Daniju"
+            }
+        ]
+
+
+## Update bucketlist [/bucketlists/3]
+
+### Update bucketlist with id = 3 [PUT]
+
++ Request (application/json)
+        
+        {
+            "name": "Feeding"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "id": 3,
+            "name": "Feeding",
+            "date_created": "2016-02-08 15:49:55",
+            "date_modified": "2016-02-08 15:49:55",
+            "user_id": 3
+        }
+
+## View bucketlist by id [/bucketlists/2]
+
+### View bucketlist with id = 2 [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "id": 2,
+            "name": "Feeding",
+            "date_created": "2016-02-08 15:49:55",
+            "date_modified": "2016-02-08 15:49:55",
+            "user_id": 3
+        }
+
+## Create new item [/bucketlists/4/items]
+
+### Create item for bucketlist of id = 4 [POST]
+
++ Request (application/json)
+        
+        {
+            "name": "Seed investment in a big company like Andela"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "id": 13,
+            "name": "Seed investment in a big company like Andel",
+            "bucketlist_id": 4,
+            "done": false,
+            "date_created": "2016-02-08 15:49:55",
+            "date_modified": "2016-02-08 15:49:55"
+        }
+
+## Update item [/bucketlists/4/items/12]
+
+### Update item 12 of bucketlist 3 [PUT]
+
++ Request (application/json)
+
+        {
+            "name": "Buy the new Ferrari"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "id": 12,
+            "name": "Buy the new Ferrari",
+            "date_created": "2016-02-08 15:49:55",
+            "date_modified": "2016-02-08 15:49:55",
+            "done": false
+        }
+
+## Delete item [/bucketlists/4/items/11]
+
+### Delete item 11 of bucketlist 4 [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            feedback: "Item successfully deleted"
+        }
+
+## Limit bucketlist per page [/bucketlists?limit=1]
+
+### Limit bucketlist to 1 [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "id": 4,
+            "name": "Weeding",
+            "items": [
+                {
+                    "id": 9,
+                    "name": "Give her out in marriage",
+                    "date_created": "2016-02-08 15:45:26",
+                    "date_modified": "2016-02-08 15:45:26",
+                    "done": false
+                },
+                {
+                    "id": 12,
+                    "name": "Seed investment in a big company like Andel",
+                    "date_created": "2016-02-08 15:49:55",
+                    "date_modified": "2016-02-08 15:49:55",
+                    "done": false
+                },
+                {
+                    "id": 13,
+                    "name": "Seed investment in a big company like Andel",
+                    "date_created": "2016-02-08 15:51:19",
+                    "date_modified": "2016-02-08 15:51:19",
+                    "done": false
+                }
+                ],
+            "date_created": "2016-02-08 14:14:13",
+            "date_modified": "2016-02-08 14:14:13",
+            "created_by": "Daniju"
+        }
+        
+## Select page to view [/bucketlists?limit=1?page=2]
+
+### Shows second page [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "id": 11,
+            "name": "Feeding",
+            "items": [],
+            "date_created": "2016-02-12 20:55:07",
+            "date_modified": "2016-02-12 20:55:07",
+            "created_by": "Daniju"
+        }
+
+
+## Search bucketlist by name [/bucketlists?q=Wee]
+
+### List All Bucketlist matching 'Wee' [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 4,
+                "name": "Weeding",
+                "items": [
+                {
+                    "id": 9,
+                    "name": "Give her out in marriage",
+                    "date_created": "2016-02-08 15:45:26",
+                    "date_modified": "2016-02-08 15:45:26",
+                    "done": false
+                },
+                {
+                    "id": 12,
+                    "name": "Seed investment in a big company like Andel",
+                    "date_created": "2016-02-08 15:49:55",
+                    "date_modified": "2016-02-08 15:49:55",
+                    "done": false
+                },
+                {
+                    "id": 13,
+                    "name": "Seed investment in a big company like Andela",
+                    "date_created": "2016-02-08 15:51:19",
+                    "date_modified": "2016-02-08 15:51:19",
+                    "done": false
+                }
+                ],
+                "date_created": "2016-02-08 14:14:13",
+                "date_modified": "2016-02-08 14:14:13",
+                "created_by": "Daniju"
+            }
+        ]
+
+
+
+## Delete bucketlist [/bucketlists/4]
+
+### Delete bucketlist with id = 4 [DELETE]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "feedback": "Bucketlist successfully destroyed"
+        }
+
+
+
+
+## User Logout [/auth/logout]
+
+### Successful user logout [GET]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "feedback": "You are successfully logged out"
         }
