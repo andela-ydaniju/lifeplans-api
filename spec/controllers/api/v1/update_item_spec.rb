@@ -4,6 +4,7 @@ RSpec.describe "Update item", type: :request do
   let(:user) do
     create(:user)
   end
+
   it "updates the paramenters of an item" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)

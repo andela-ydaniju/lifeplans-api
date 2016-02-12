@@ -1,10 +1,10 @@
 class Pagination
-  attr_reader :objects, :params
+  attr_reader :bucketlists, :params
   DEFAULT_LIMIT = 20
   DEFAULT_PAGE = 1
 
-  def initialize(objects, params)
-    @objects = objects
+  def initialize(bucketlists, params)
+    @bucketlists = bucketlists
     @params = params
   end
 
@@ -16,13 +16,13 @@ class Pagination
     limit = limit > 100 ? 100 : limit
     page = page < 1 ? DEFAULT_PAGE : page
 
-    paginate objects, limit, page
+    paginate bucketlists, limit, page
   end
 
-  def paginate(objects, limit, page)
+  def paginate(bucketlists, limit, page)
     begin_index = (page - 1) * limit
     end_index = begin_index + limit
 
-    objects[begin_index...end_index]
+    bucketlists[begin_index...end_index]
   end
 end

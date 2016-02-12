@@ -4,6 +4,7 @@ RSpec.describe "Show single bucketlist", type: :request do
   let(:user) do
     create(:user)
   end
+
   it "show a single bucketlist" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)
@@ -18,7 +19,7 @@ RSpec.describe "Show single bucketlist", type: :request do
         {},
         headers
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status 200
   end
 
   it "show a single bucketlist" do
@@ -35,6 +36,6 @@ RSpec.describe "Show single bucketlist", type: :request do
         {},
         headers
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(404)
+    expect(response).to have_http_status 404
   end
 end

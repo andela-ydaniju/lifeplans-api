@@ -4,6 +4,7 @@ RSpec.describe "Item creation", type: :request do
   let(:user) do
     create(:user)
   end
+
   it "creates new item for valid user" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)
@@ -22,7 +23,7 @@ RSpec.describe "Item creation", type: :request do
          headers
 
     expect(response.content_type).to eq "application/json"
-    expect(response).to have_http_status 200
+    expect(response).to have_http_status 201
   end
 
   it "creates new item for valid user" do

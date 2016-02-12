@@ -3,6 +3,7 @@ RSpec.describe "Update bucketlist process", type: :request do
   let(:user) do
     create(:user)
   end
+
   it "changes the attribute of a bucketlist" do
     signin_helper(user.username, user.password)
     token = token_builder(user.username, user.password)

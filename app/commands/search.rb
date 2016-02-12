@@ -1,16 +1,16 @@
 class Search
-  attr_reader :objects, :params
+  attr_reader :bucketlists, :params
 
-  def initialize(objects, params)
-    @objects = objects
+  def initialize(bucketlists, params)
+    @bucketlists = bucketlists
     @params = params
   end
 
   def choose
     if params[:q]
-      objects.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
+      bucketlists.where("lower(name) LIKE ?", "%#{params[:q].downcase}%")
     else
-      objects
+      bucketlists
     end
   end
 end

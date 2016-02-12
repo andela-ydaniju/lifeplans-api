@@ -16,7 +16,7 @@ RSpec.describe "Logging in to an account", type: :request do
     }, headers
 
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status 200
   end
 
   it "will not log user in with incorrect entries" do
@@ -29,6 +29,6 @@ RSpec.describe "Logging in to an account", type: :request do
       password: Faker::Name.name,
     }, headers
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(401)
+    expect(response).to have_http_status 401
   end
 end

@@ -1,6 +1,16 @@
 # lifeplans-api
 [![Coverage Status](https://coveralls.io/repos/github/andela-ydaniju/lifeplans-api/badge.svg?branch=ft-bucketlist-model-112129783)](https://coveralls.io/github/andela-ydaniju/lifeplans-api?branch=ft-bucketlist-model-112129783) [![Circle CI](https://circleci.com/gh/andela-ydaniju/lifeplans-api.svg?style=svg)](https://circleci.com/gh/andela-ydaniju/lifeplans-api) [![Code Climate](https://codeclimate.com/github/andela-ydaniju/lifeplans-api/badges/gpa.svg)](https://codeclimate.com/github/andela-ydaniju/lifeplans-api)
 
+## Features
+
+Lifeplans-Api is an API service that allows users create bucketlists to store items. Bucketlists are initialized with a name, and an optional list of Items. Items are stored under bucketlists, with a name and a done-status indicating whether Item is completed or not.
+
+For full access to the API, a user account is required. After registration, an initial request is made to log in to user account. This request generates a JSON Web Token, which is returned in the response. This token is used to authenticate subsequent requests to the API. 
+
+For full documentation, and usage examples, see http://docs.lifeplansapi.apiary.io/
+
+For API access, visit https://lifeplans-api.herokuapp.com
+
 ## Dependencies
 
 User authentication is implemented with the JWT gem. For more information, see https://github.com/jwt/ruby-jwt
@@ -17,15 +27,6 @@ To install Ruby visit [Ruby Lang](https://www.ruby-lang.org). [v2.2.3p173]
 
 To install Rails visit [Ruby on Rails](http://rubyonrails.org/). [v4.2.4]
 
-## Features
-
-APIBucket is an API service that allows users create bucketlists to store items. Bucketlists are initialized with a name, and an optional list of Items. Items are stored under bucketlists, with a name and a done-status indicating whether Item is completed or not.
-
-For full access to the API, a user account is required. After registration, an initial request is made to log in to user account. This request generates a JSON Web Token, which is returned in the response. This token is used to authenticate subsequent requests to the API. 
-
-For full documentation, and usage examples, see http://docs.lifeplansapi.apiary.io/
-
-For API access, visit https://lifeplans-api.herokuapp.com
 
 ##API endpoints.
 

@@ -15,9 +15,10 @@ RSpec.describe "Bucketlist creation", type: :request do
     post "/bucketlists", {
       name: bucketlist.name,
     }, headers
-    json_parsed = JSON.parse(response.body)
+
+    parsed_bucketlist = JSON.parse(response.body)
     message = "A token is required."
-    expect(json_parsed["message"]).to eq message
+    expect(parsed_bucketlist["message"]).to eq message
   end
 
   it "does not create bucketlist for unauthenticated user" do
@@ -31,8 +32,8 @@ RSpec.describe "Bucketlist creation", type: :request do
     post "/bucketlists", {
       name: bucketlist.name,
     }, headers
-    json_parsed = JSON.parse(response.body)
-    expect(json_parsed["message"]).to include "Token invalid"
+    parsed_bucketlist = JSON.parse(response.body)
+    expect(parsed_bucketlist["message"]).to include "Token invalid"
   end
 
   it "creates no bucketlist if name not given" do
@@ -47,7 +48,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       name: nil,
     }, headers
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(422)
+    expect(response).to have_http_status 422
   end
 
   it "creates bucketlist if all conditions are met" do
@@ -62,6 +63,6 @@ RSpec.describe "Bucketlist creation", type: :request do
       name: "Lagrange",
     }, headers
     expect(response.content_type).to eq("application/json")
-    expect(response).to have_http_status(200)
+    expect(response).to have_http_status 201
   end
 end
