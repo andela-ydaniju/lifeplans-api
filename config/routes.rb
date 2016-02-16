@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root to: "homes#index"
-
   namespace :api, path: "" do
     namespace :v1, path: "", constraints: ApiConstraint.new(1, true) do
       resources :bucketlists, except: [:edit, :new] do
