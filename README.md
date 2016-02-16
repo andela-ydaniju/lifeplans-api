@@ -9,7 +9,7 @@ For full access to the API, a user account is required. After registration, an i
 
 For full documentation, and usage examples, see http://docs.lifeplansapi.apiary.io/
 
-For API access, visit https://lifeplans-api.herokuapp.com
+For API access, visit http://lifeplans-api.herokuapp.com
 
 ## Dependencies
 
