@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class CreateBucketlists < ActiveRecord::Migration
   def change
     create_table :bucketlists do |t|

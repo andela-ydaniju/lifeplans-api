@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "rails_helper"
 
 RSpec.describe "Bucketlist creation", type: :request do
@@ -13,7 +14,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
     post "/bucketlists", {
-      name: bucketlist.name,
+      name: bucketlist.name
     }, headers
 
     parsed_bucketlist = JSON.parse(response.body)
@@ -30,7 +31,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token wrong_token_for_419s"
     }
     post "/bucketlists", {
-      name: bucketlist.name,
+      name: bucketlist.name
     }, headers
     parsed_bucketlist = JSON.parse(response.body)
     expect(parsed_bucketlist["message"]).to include "Token invalid"
@@ -45,7 +46,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
-      name: nil,
+      name: nil
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 422
@@ -60,7 +61,7 @@ RSpec.describe "Bucketlist creation", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
     post "/bucketlists", {
-      name: "Lagrange",
+      name: "Lagrange"
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 201

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AuthToken
   def self.encode(payload, exp = 48.hours.from_now)
     payload[:exp] = exp.to_i

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "rails_helper"
 RSpec.describe "Update bucketlist process", type: :request do
   let(:user) do
@@ -16,7 +17,7 @@ RSpec.describe "Update bucketlist process", type: :request do
     }
 
     put "/bucketlists/#{bucketlist.id}", {
-      name: "Visit China",
+      name: "Visit China"
     }, headers
 
     expect(response.content_type).to eq("application/json")
@@ -35,7 +36,7 @@ RSpec.describe "Update bucketlist process", type: :request do
     }
 
     put "/bucketlists/#{bucketlist.id}", {
-      name: nil,
+      name: nil
     }, headers
 
     expect(response.content_type).to eq("application/json")

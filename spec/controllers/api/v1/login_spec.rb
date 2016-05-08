@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "rails_helper"
 
 RSpec.describe "Logging in to an account", type: :request do
@@ -12,7 +13,7 @@ RSpec.describe "Logging in to an account", type: :request do
     }
     post "/auth/login", {
       username: user.username,
-      password: user.password,
+      password: user.password
     }, headers
 
     expect(response.content_type).to eq("application/json")
@@ -26,7 +27,7 @@ RSpec.describe "Logging in to an account", type: :request do
     }
     post "/auth/login", {
       username: user.username,
-      password: Faker::Name.name,
+      password: Faker::Name.name
     }, headers
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 401

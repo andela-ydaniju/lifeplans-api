@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "rails_helper"
 
 RSpec.describe "list all bucketlists", type: :request do
@@ -41,7 +42,7 @@ RSpec.describe "list all bucketlists", type: :request do
     }
 
     post "/bucketlists", {
-      name: "Adventure",
+      name: "Adventure"
     }, headers
 
     get "/bucketlists", {

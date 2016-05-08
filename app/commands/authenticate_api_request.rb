@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class AuthenticateApiRequest
   prepend SimpleCommand
   attr_reader :headers, :params
