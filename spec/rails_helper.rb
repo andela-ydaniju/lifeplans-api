@@ -8,7 +8,7 @@ require "rspec/rails"
 require "coveralls"
 Coveralls.wear!
 
-ActiveRecord::Migration.maintain_test_schema!
+ActiveRecord::Migration[5.2].maintain_test_schema!
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

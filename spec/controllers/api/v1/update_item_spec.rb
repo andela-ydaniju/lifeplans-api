@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Update item", type: :request do
@@ -20,8 +21,7 @@ RSpec.describe "Update item", type: :request do
     item = create(:item)
 
     put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { name: Faker::Lorem.sentence },
-        headers
+        params: { name: Faker::Lorem.sentence }, headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 200
@@ -40,9 +40,8 @@ RSpec.describe "Update item", type: :request do
 
     item = create(:item)
 
-    put "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-        { name: nil },
-        headers
+    put "/bucketlists/#{bucketlist.id}/items/#{item.id}", params: { name: nil },
+                                                          headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 422

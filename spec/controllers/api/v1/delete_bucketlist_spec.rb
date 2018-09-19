@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "The deletion of buckelist", type: :request do
@@ -17,9 +18,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    delete "/bucketlists/#{bucketlist.id}",
-           {},
-           headers
+    delete "/bucketlists/#{bucketlist.id}", headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 200
@@ -36,9 +35,7 @@ RSpec.describe "The deletion of buckelist", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    delete "/bucketlists/#{bucketlist.id + 1}",
-           {},
-           headers
+    delete "/bucketlists/#{bucketlist.id + 1}", headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 404
@@ -55,12 +52,9 @@ RSpec.describe "The deletion of buckelist", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    delete "/bucketlists/#{bucketlist.id}",
-           {},
-           headers
-    get "/bucketlists/#{bucketlist.id}",
-        {},
-        headers
+    delete "/bucketlists/#{bucketlist.id}", headers: headers
+
+    get "/bucketlists/#{bucketlist.id}", headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 404

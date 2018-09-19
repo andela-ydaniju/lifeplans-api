@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require "factory_girl_rails"
+
+require "factory_bot_rails"
 require "json"
 
 RSpec.configure do |config|
@@ -11,12 +12,13 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 end
 
 def signin_helper(username, password)
-  post "/auth/login", { username: username, password: password },
-       { HTTP_ACCEPT: "application/vnd.lifeplans-api.v1+json" }
+  post "/auth/login",
+       params: { username: username, password: password },
+       headers: { HTTP_ACCEPT: "application/vnd.lifeplans-api.v1+json" }
 end
 
 def token_builder(username, password)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Item creation", type: :request do
@@ -19,9 +20,8 @@ RSpec.describe "Item creation", type: :request do
 
     item = build(:item)
 
-    post "/bucketlists/#{bucketlist.id}/items",
-         { name: item.name },
-         headers
+    post "/bucketlists/#{bucketlist.id}/items", params: { name: item.name },
+                                                headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 201
@@ -38,9 +38,8 @@ RSpec.describe "Item creation", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    post "/bucketlists/#{bucketlist.id}/items",
-         { name: nil },
-         headers
+    post "/bucketlists/#{bucketlist.id}/items", params: { name: nil },
+                                                headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 422

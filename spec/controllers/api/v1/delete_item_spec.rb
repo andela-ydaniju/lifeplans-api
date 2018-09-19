@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Delete item", type: :request do
@@ -19,9 +20,7 @@ RSpec.describe "Delete item", type: :request do
 
     item = create(:item)
 
-    delete "/bucketlists/#{bucketlist.id}/items/#{item.id}",
-           {},
-           headers
+    delete "/bucketlists/#{bucketlist.id}/items/#{item.id}", headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 200
@@ -41,8 +40,7 @@ RSpec.describe "Delete item", type: :request do
     item = create(:item)
 
     delete "/bucketlists/#{bucketlist.id}/items/#{item.id + 5}",
-           {},
-           headers
+           headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 404
