@@ -12,5 +12,6 @@ module LifeplansApi
   class Application < Rails::Application
     config.autoload_paths << Rails.root.join("lib")
     config.api_only = true
+    config.active_record.sqlite3.represent_boolean_as_integer = true
   end
 end

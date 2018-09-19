@@ -19,7 +19,7 @@ RSpec.describe "list all bucketlists", type: :request do
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
-    get "/bucketlists", params: {}, headers: headers
+    get "/bucketlists", headers: headers
 
     parsed_bucketlist = JSON.parse(response.body)
 

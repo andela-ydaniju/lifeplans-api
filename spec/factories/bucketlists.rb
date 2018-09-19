@@ -13,7 +13,7 @@
 
 FactoryBot.define do
   factory :bucketlist do
-    name Faker::Hipster.word
-    user_id 1
+    name { Faker::Hipster.word }
+    user_id { 1 }
   end
 end

@@ -14,8 +14,8 @@
 
 FactoryBot.define do
   factory :item do
-    name Faker::Hipster.sentence
-    bucketlist_id 1
-    done false
+    name { Faker::Hipster.sentence }
+    bucketlist_id { 1 }
+    done { false }
   end
 end
