@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
-ruby "2.4.0"
+ruby "2.4.4"
 
 gem "active_model_serializers"
 gem "bcrypt", "~> 3.1.7"
