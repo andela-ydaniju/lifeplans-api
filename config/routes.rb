@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   namespace :api, path: "" do
     namespace :v1, path: "", constraints: ApiConstraint.new(1, true) do
-      resources :bucketlists, except: [:edit, :new] do
-        resources :items, only: [:create, :destroy, :update]
+      resources :bucketlists, except: %i(edit new) do
+        resources :items, only: %i(create destroy update)
       end
 
       scope :auth, path: "auth" do

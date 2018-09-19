@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthToken
   def self.encode(payload, exp = 48.hours.from_now)
     payload[:exp] = exp.to_i
@@ -10,7 +12,7 @@ class AuthToken
       Rails.application.secrets.secret_key_base
     )[0]
     HashWithIndifferentAccess.new body
-  rescue
+  rescue StandardError
     nil
   end
 end

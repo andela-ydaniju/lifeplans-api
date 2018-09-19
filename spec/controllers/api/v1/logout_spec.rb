@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Logging in to an account", type: :request do
@@ -16,9 +18,7 @@ RSpec.describe "Logging in to an account", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    get "/auth/logout",
-        {},
-        headers
+    get "/auth/logout", headers: headers
 
     expect(response).to have_http_status 200
   end

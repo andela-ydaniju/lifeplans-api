@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "Logging in to an account", type: :request do
@@ -10,10 +12,10 @@ RSpec.describe "Logging in to an account", type: :request do
       "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
-    post "/auth/login", {
+    post "/auth/login", params: {
       username: user.username,
-      password: user.password,
-    }, headers
+      password: user.password
+    }, headers: headers
 
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 200
@@ -24,10 +26,11 @@ RSpec.describe "Logging in to an account", type: :request do
       "ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json"
     }
-    post "/auth/login", {
+    post "/auth/login", params: {
       username: user.username,
-      password: Faker::Name.name,
-    }, headers
+      password: Faker::Name.name
+    }, headers: headers
+
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 401
   end

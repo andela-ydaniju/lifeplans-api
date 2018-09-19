@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe "list all bucketlists", type: :request do
@@ -17,8 +19,7 @@ RSpec.describe "list all bucketlists", type: :request do
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
-    get "/bucketlists", {},
-        headers
+    get "/bucketlists", headers: headers
 
     parsed_bucketlist = JSON.parse(response.body)
 
@@ -40,13 +41,9 @@ RSpec.describe "list all bucketlists", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    post "/bucketlists", {
-      name: "Adventure",
-    }, headers
+    post "/bucketlists", params: { name: "Adventure" }, headers: headers
 
-    get "/bucketlists", {
-      q: "Advent"
-    }, headers
+    get "/bucketlists", params: { q: "Advent" }, headers: headers
 
     parsed_bucketlist = JSON.parse(response.body)
 
@@ -65,8 +62,7 @@ RSpec.describe "list all bucketlists", type: :request do
       "HTTP_ACCEPT" => "application/vnd.lifeplans-api.v1+json",
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
-    get "/bucketlists", {},
-        headers
+    get "/bucketlists", params: {}, headers: headers
 
     expect(response.content_type).to eq "application/json"
     expect(response).to have_http_status 404

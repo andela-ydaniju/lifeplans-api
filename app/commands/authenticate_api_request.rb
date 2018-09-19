@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthenticateApiRequest
   prepend SimpleCommand
   attr_reader :headers, :params
@@ -50,7 +52,7 @@ class AuthenticateApiRequest
 
   def match_id_to_user(user_id)
     user = User.find_by_id(user_id)
-    errors[:message] = "Token invalid." unless user && user.auth_token
+    errors[:message] = "Token invalid." unless user&.auth_token
 
     user
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: items
@@ -10,10 +12,10 @@
 #  updated_at    :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :item do
-    name Faker::Hipster.sentence
-    bucketlist_id 1
-    done false
+    name { Faker::Hipster.sentence }
+    bucketlist_id { 1 }
+    done { false }
   end
 end

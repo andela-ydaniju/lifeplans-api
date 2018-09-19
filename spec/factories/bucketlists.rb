@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: bucketlists
@@ -9,9 +11,9 @@
 #  user_id    :integer
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :bucketlist do
-    name Faker::Hipster.word
-    user_id 1
+    name { Faker::Hipster.word }
+    user_id { 1 }
   end
 end

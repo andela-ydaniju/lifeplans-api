@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 RSpec.describe "Update bucketlist process", type: :request do
   let(:user) do
@@ -15,9 +17,9 @@ RSpec.describe "Update bucketlist process", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    put "/bucketlists/#{bucketlist.id}", {
-      name: "Visit China",
-    }, headers
+    put "/bucketlists/#{bucketlist.id}", params: {
+      name: "Visit China"
+    }, headers: headers
 
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status 200
@@ -34,9 +36,9 @@ RSpec.describe "Update bucketlist process", type: :request do
       "HTTP_AUTHORIZATION" => "token #{token}"
     }
 
-    put "/bucketlists/#{bucketlist.id}", {
-      name: nil,
-    }, headers
+    put "/bucketlists/#{bucketlist.id}", params: {
+      name: nil
+    }, headers: headers
 
     expect(response.content_type).to eq("application/json")
     expect(response).to have_http_status :unprocessable_entity
