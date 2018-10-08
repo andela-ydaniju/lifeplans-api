@@ -28,7 +28,7 @@ To install Ruby visit [Ruby Lang](https://www.ruby-lang.org). [v2.2.3p173]
 To install Rails visit [Ruby on Rails](http://rubyonrails.org/). [v4.2.4]
 
 
-##API endpoints.
+## API endpoints.
 
 | EndPoint                                |   Functionality                      |
 | --------------------------------------- | ------------------------------------:|
