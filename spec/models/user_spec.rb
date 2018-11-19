@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
 
   context "when initialized" do
     it "is valid with correct attributes" do
-      expect(user).not_to be_valid
+      expect(user).to be_valid
     end
 
     it "is valid with correct attributes" do
